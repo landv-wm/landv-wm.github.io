@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LandV is a multimodal driving world model that jointly generates six camera views and LiDAR range maps. Explore predictions, rollouts, scene control, and results on nuScenes.">
+  <meta name="theme-color" content="#f9fbfa">
+  <title>LandV — Multimodal World Modeling for Autonomous Driving</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/stix-two-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast" id="top">
+  <div class="wrap mast-inner">
+    <a class="logotype" href="#top" aria-label="LandV home"><img class="wordmark-art" src="assets/images/landv-wordmark.webp" width="1736" height="400" alt="LandV"></a>
+    <nav aria-label="Main navigation"><a href="#introduction">Introduction</a><a href="#overview">Overview</a><a href="#videos">Videos</a><a href="#results">Results</a></nav>
+  </div>
+</header>
+<main id="main">
+  <div class="hero-band"><section class="hero wrap" aria-labelledby="paper-title">
+    <div class="hero-copy">
+      <h1 id="paper-title"><span class="hero-mark"><img class="wordmark-art" src="assets/images/landv-wordmark.webp" width="1736" height="400" alt="LandV"></span><span class="sr">: </span><span class="paper-name">Multimodal World Modeling for Autonomous Driving via <span>Modality-Aligned</span> Asymmetric <span>Dual-Stream</span> Architecture</span></h1>
+      <div class="paper-byline">
+        <ul class="paper-authors" aria-label="Authors">
+          <li>Jiasong Feng<sup>1,2</sup></li>
+          <li aria-describedby="project-leader">Chen Liu<sup>2†</sup></li>
+          <li>Zhanjie Zhang<sup>3</sup></li>
+          <li>Yimeng Li<sup>2</sup></li>
+          <li>Mofan Zhou<sup>2</sup></li>
+          <li>Kun Zhan<sup>2</sup></li>
+          <li aria-describedby="corresponding-author">Qilong Wang<sup>1*</sup></li>
+        </ul>
+        <ul class="paper-affiliations" aria-label="Affiliations">
+          <li><sup>1</sup> Tianjin University</li>
+          <li><sup>2</sup> Li Auto Inc.</li>
+          <li><sup>3</sup> Zhejiang University</li>
+        </ul>
+        <p class="paper-roles"><span id="project-leader">† <em>Project leader</em></span><span id="corresponding-author">* <em>Corresponding author</em></span></p>
+      </div>
+      <p class="hero-summary">Given the first frame, LandV jointly predicts six camera views and a LiDAR scan at each future time step.</p>
+      <a class="primary-link" href="#videos"><span class="play-glyph" aria-hidden="true"></span>Explore videos</a>
+    </div>
+    <figure class="hero-figure">
+      <p class="hero-task">First-frame conditioned <span>· scene-0524_208</span></p>
+      <div class="hero-labels"><span>GT</span><span>Original</span></div>
+      <div class="hero-stage" style="--poster-y: 0%">
+        <video id="hero-sequence" width="1040" height="1800" muted playsinline loop preload="metadata"
+          poster="assets/images/hero-controls.jpg" src="assets/videos/hero-controls.mp4" aria-label="Synchronized scene control examples"></video>
+        <canvas width="1040" height="300" aria-hidden="true"></canvas>
+        <div class="hero-sliders" hidden>
+          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="First-frame conditioned, GT. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
+          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="First-frame conditioned, Original. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
+        </div>
+      </div>
+      <div class="hero-labels"><span>Turn left <small>· White SUV</small></span><span>Turn right <small>· Parked sedan</small></span></div>
+      <div class="hero-stage" style="--poster-y: 40%">
+        <canvas width="1040" height="300" aria-hidden="true"></canvas>
+        <div class="hero-sliders" hidden>
+          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="First-frame conditioned, Turn left. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
+          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="First-frame conditioned, Turn right. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
+        </div>
+      </div>
+      <p class="hero-task" id="vehicle-insertion">Vehicle insertion <span>· scene-0524_208</span></p>
+      <div class="hero-labels"><span>Original</span><span>Add car <small>· Passing on the left</small></span></div>
+      <div class="hero-stage" style="--poster-y: 80%">
+        <canvas width="1040" height="300" aria-hidden="true"></canvas>
+        <div class="hero-sliders" hidden>
+          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="Vehicle insertion, Original. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
+          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="Vehicle insertion, Add car passing on the left. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
+        </div>
+      </div>
+      <figcaption>
+        <span>Drag to compare RGB and LiDAR</span>
+        <span class="hero-controls" hidden>
+          <select id="hero-speed" aria-label="Scene control playback speed"><option value="slow">1/3×</option><option value="normal">1×</option></select>
+          <button id="hero-toggle" type="button" aria-controls="hero-sequence">Play</button>
+        </span>
+      </figcaption>
+      <noscript><a href="assets/videos/hero-controls.mp4">Play scene control video</a></noscript>
+    </figure>
+  </section></div>
+  <section class="intro-section wrap" id="introduction" aria-labelledby="intro-title">
+    <div class="intro-copy">
+      <h2 id="intro-title">Introduction</h2>
+      <p>LandV pairs a pretrained video diffusion model with a lightweight LiDAR stream that predicts range maps directly.</p>
+      <p>Geometry-guided cross-attention connects the two streams, and a training loss aligns their attention using 3D object correspondences.</p>
+    </div>
+    <figure class="paper-fig paradigm">
+        <a href="assets/images/figure1.webp" data-figure="1" aria-label="Enlarge Figure 1"><img src="assets/images/figure1.webp" alt="Three diagrams compare a shared backbone, an intermediate 3D representation, and LandV’s coupled diffusion streams." width="1540" height="1759" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></a>
+        <figcaption><b>Figure 1</b> Joint video–LiDAR generation paradigms.</figcaption>
+    </figure>
+  </section>
+  <section class="overview-section wrap" id="overview" aria-labelledby="overview-title">
+    <div class="overview-head" id="method"><h2 id="overview-title">Overview</h2></div>
+    <figure class="paper-fig arch">
+      <a href="assets/images/figure2.webp" data-figure="2" aria-label="Enlarge Figure 2"><img src="assets/images/figure2.webp" alt="The LandV architecture with video and LiDAR diffusion streams, geometry-guided attention, and a local geometry refinement head." width="2480" height="1239" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></a>
+      <figcaption><b>Figure 2</b> LandV’s dual-stream architecture (a) and its Local Geometry Refinement head for LiDAR (b).</figcaption>
+    </figure>
+  </section>
+  <section class="video-section" id="videos" aria-labelledby="videos-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2 id="videos-title">Video gallery</h2><p>Explore camera and LiDAR generation on nuScenes.</p></div>
+        <fieldset class="rate"><legend>Playback speed</legend><button type="button" data-rate="0.3333333333333333" aria-pressed="true" aria-label="One-third speed">1/3×</button><button type="button" data-rate="1" aria-pressed="false" aria-label="Original speed">1×</button></fieldset>
+      </div>
+      <nav class="gallery-nav" aria-label="Video categories">
+        <button data-group="prediction" aria-pressed="true">GT vs. prediction <small>4</small></button>
+        <button data-group="rollout" aria-pressed="false">Rollouts <small>3</small></button>
+        <button data-group="uniscene" aria-pressed="false">UniScene comparison <small>1</small></button>
+        <button data-group="control" aria-pressed="false">Scene control <small>1</small></button>
+      </nav>
+      <div class="player-caption" aria-live="polite">
+        <h3 id="clip-heading">GT vs. prediction <span>scene-0796_152</span></h3>
+        <p id="clip-description">One real frame conditions 16 future frames. Six camera views are paired with their LiDAR projections, with ground truth above and LandV below.</p>
+      </div>
+      <nav id="clips" aria-label="Select a video in this category"></nav>
+      <div class="player-wrap"><video id="player" src="assets/videos/prediction-0796-152.mp4" poster="assets/videos/prediction-0796-152.jpg" controls controlslist="nodownload" playsinline muted loop preload="metadata" aria-label="GT and LandV prediction for scene-0796_152"></video></div>
+      <noscript><p><a href="assets/videos/">Open the video files</a></p></noscript>
+    </div>
+  </section>
+  <section class="results-section" id="results" aria-labelledby="results-title"><div class="wrap">
+    <h2 id="results-title">Quantitative results</h2>
+    <p class="section-desc">Generation quality, cross-modal geometry, and object consistency on nuScenes.</p>
+    <section class="table-section" aria-labelledby="table-one"><h3 id="table-one"><span>Table 1</span> Generation quality on nuScenes</h3>
+      <div class="table-scroll" tabindex="0" aria-label="Scroll Table 1 horizontally"><table class="result-table generation-table" aria-label="Table 1. Generation quality on nuScenes">
+<thead>
+<tr><th scope="col" rowspan="2">Modality</th><th scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="2">Video quality</th><th scope="colgroup" colspan="2">LiDAR quality</th><th scope="colgroup" colspan="2">Cross-modal quality</th></tr>
+<tr><th scope="col">FID ↓</th><th scope="col">FVD ↓</th><th scope="col">MMD ↓</th><th scope="col">JSD ↓</th><th scope="col">Global ↑</th><th scope="col">Object ↑</th></tr>
+</thead>
+<tbody>
+<tr><th scope="rowgroup" rowspan="5">Video</th><th scope="row">MagicDrive-V2</th><td>22.50</td><td>92.81</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+<tr><th scope="row">DiST-T</th><td>14.79</td><td>40.73</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+<tr><th scope="row">DriveDreamer-2</th><td>11.91</td><td>71.22</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+<tr><th scope="row">OmniNWM</th><td>16.25</td><td>51.54</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+<tr><th scope="row"><strong>Ours (Video-only)</strong></th><td><u>9.81</u></td><td><u>38.89</u></td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+</tbody>
+<tbody>
+<tr><th scope="rowgroup" rowspan="5">LiDAR</th><th scope="row">RangeLDM</th><td>–</td><td>–</td><td>0.94</td><td>0.084</td><td>–</td><td>–</td></tr>
+<tr><th scope="row">OpenDWM (DiT3)</th><td>–</td><td>–</td><td>0.76</td><td>0.069</td><td>–</td><td>–</td></tr>
+<tr><th scope="row">OpenDWM (MaskGIT)</th><td>–</td><td>–</td><td>1.36</td><td>0.119</td><td>–</td><td>–</td></tr>
+<tr><th scope="row">LaGen</th><td>–</td><td>–</td><td><u>0.62</u></td><td><u>0.068</u></td><td>–</td><td>–</td></tr>
+<tr><th scope="row"><strong>Ours (LiDAR-only)</strong></th><td>–</td><td>–</td><td>0.94</td><td>0.079</td><td>–</td><td>–</td></tr>
+</tbody>
+<tbody>
+<tr><th scope="rowgroup" rowspan="7">Multimodal</th><th scope="row">UniScene</th><td>12.04</td><td>56.38</td><td>4.62</td><td>0.176</td><td>61.22</td><td>54.94</td></tr>
+<tr><th scope="row">UniScene (GT occ)</th><td>13.14</td><td>74.52</td><td>3.43</td><td>0.145</td><td><u>64.01</u></td><td><u>61.26</u></td></tr>
+<tr><th scope="row">UniSceneV2<sup>†</sup></th><td>24.84</td><td>111.74</td><td>2.32</td><td>0.132</td><td>28.90</td><td>31.28</td></tr>
+<tr class="paper-reported"><th scope="row">UniDriveDreamer</th><td>2.81</td><td>11.44</td><td>0.27</td><td>0.039</td><td>–</td><td>–</td></tr>
+<tr class="paper-reported"><th scope="row">Genesis</th><td>4.24</td><td>16.95</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+<tr class="paper-reported"><th scope="row">OmniGen</th><td>21.01</td><td>–</td><td>2.94</td><td>0.105</td><td>–</td><td>–</td></tr>
+<tr class="ours"><th scope="row"><strong>LandV (Ours)</strong></th><td><strong>7.57</strong></td><td><strong>30.45</strong></td><td><strong>0.30</strong></td><td><strong>0.058</strong></td><td><strong>75.68</strong></td><td><strong>70.16</strong></td></tr>
+</tbody>
+</table></div>
+      <p class="table-note">MMD is scaled by 10⁴. Global and Object measure scene- and object-level cross-modal geometric quality. Gray rows show results reported outside the unified protocol. † indicates a different training dataset. DriveDreamer-2 uses RGB conditioning. <strong>Bold</strong> and <u>underlined</u> values mark the best and second-best unified results.</p>
+    </section>
+    <section class="table-section" aria-labelledby="table-two"><h3 id="table-two"><span>Table 2</span> Object consistency on nuScenes</h3>
+      <div class="table-scroll" tabindex="0" aria-label="Scroll Table 2 horizontally"><table class="result-table consistency-table" aria-label="Table 2. Object Consistency Pass Rate on nuScenes">
+<thead><tr><th scope="col">Method</th><th scope="col">Cross-view</th><th scope="col">Cross-time</th><th scope="col">Joint</th><th scope="col">Overall</th></tr></thead>
+<tbody>
+<tr><th scope="row">MagicDrive-V2</th><td>42.0</td><td>72.0</td><td>54.0</td><td>56.0</td></tr>
+<tr><th scope="row">DiST-T</th><td>26.0</td><td>68.0</td><td>38.0</td><td>44.0</td></tr>
+<tr><th scope="row"><abbr title="DriveDreamer-2">DD2</abbr></th><td><strong>70.0</strong></td><td>82.0</td><td><u>74.0</u></td><td><u>75.3</u></td></tr>
+<tr><th scope="row">OmniNWM</th><td>14.0</td><td>72.0</td><td>38.0</td><td>41.3</td></tr>
+<tr><th scope="row">UniScene</th><td>18.0</td><td>82.0</td><td>50.0</td><td>50.0</td></tr>
+<tr><th scope="row"><strong>Ours (Video-only)</strong></th><td>30.0</td><td><u>84.0</u></td><td>36.0</td><td>50.0</td></tr>
+<tr class="ours"><th scope="row"><strong>LandV (Ours)</strong></th><td><u>66.0</u></td><td><strong>86.0</strong></td><td><strong>82.0</strong></td><td><strong>78.0</strong></td></tr>
+</tbody>
+</table></div>
+      <p class="table-note">Object Consistency Pass Rate (%, higher is better) across camera views, time, and both together (Joint). DD2 denotes DriveDreamer-2. <strong>Bold</strong> and <u>underlined</u> values mark the best and second-best results.</p>
+    </section>
+  </div></section>
+</main>
+<footer class="foot wrap"><a class="logotype" href="#top" aria-label="LandV home"><img class="wordmark-art" src="assets/images/landv-wordmark.webp" width="1736" height="400" alt="LandV"></a><a href="#top">Back to top</a></footer>
+<dialog id="figure-dialog" aria-labelledby="dialog-title"><div class="dialog-bar"><h2 id="dialog-title">Figure</h2><button id="close-figure" aria-label="Close enlarged figure">Close <span aria-hidden="true">×</span></button></div><img id="full-figure" alt=""></dialog>
+</body></html>
