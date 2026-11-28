@@ -17,7 +17,7 @@
 <header class="mast" id="top">
   <div class="wrap mast-inner">
     <a class="logotype" href="#top" aria-label="LandV home"><img class="wordmark-art" src="assets/images/landv-wordmark.webp" width="1736" height="400" alt="LandV"></a>
-    <nav aria-label="Main navigation"><a href="#introduction">Introduction</a><a href="#overview">Overview</a><a href="#videos">Videos</a><a href="#results">Results</a></nav>
+    <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#videos">Videos</a><a href="#results">Results</a></nav>
   </div>
 </header>
 <main id="main">
@@ -41,7 +41,7 @@
         </ul>
         <p class="paper-roles"><span id="project-leader">† <em>Project leader</em></span><span id="corresponding-author">* <em>Corresponding author</em></span></p>
       </div>
-      <p class="hero-summary">Given the first frame, LandV jointly predicts six camera views and a LiDAR scan at each future time step.</p>
+      <p class="hero-summary">LandV jointly generates six-view video and 360° LiDAR scans that stay geometrically aligned over time. You can change the weather, add or move vehicles, and specify the ego vehicle’s trajectory.</p>
       <nav class="paper-links" aria-label="Project resources">
         <a class="primary-link" href="#videos"><span class="play-glyph" aria-hidden="true"></span>Explore videos</a>
         <a class="code-link" href="https://github.com/fjscfy/LandV">GitHub <span aria-hidden="true">↗</span></a>
@@ -89,20 +89,19 @@
       <noscript><a href="assets/videos/hero-controls.mp4">Play scene control video</a></noscript>
     </figure>
   </section></div>
-  <section class="intro-section wrap" id="introduction" aria-labelledby="intro-title">
-    <div class="intro-copy">
-      <h2 id="intro-title">Introduction</h2>
-      <p>LandV pairs a pretrained video diffusion model with a lightweight LiDAR stream that predicts range maps directly.</p>
-      <p>Geometry-guided cross-attention connects the two streams, and a training loss aligns their attention using 3D object correspondences.</p>
-    </div>
-    <figure class="paper-fig paradigm">
+  <section class="overview-section wrap" id="overview" aria-labelledby="overview-title">
+    <div class="overview-intro" id="introduction">
+      <div class="intro-copy">
+        <h2 id="overview-title">Overview</h2>
+        <p>Figure 1 shows three ways to generate video and LiDAR together. The first two use a shared backbone (a) or a common 3D scene representation (b). LandV (c) gives each sensor its own stream and lets the two exchange features during generation. The video stream models appearance in a pretrained latent space, while a lighter LiDAR stream predicts range maps directly and refines local geometry.</p>
+        <p>Sensor calibration limits cross-attention to the part of the LiDAR scan covered by each camera, reducing computation. During training, 3D object correspondences identify which direction of attention locates an object more accurately. That direction guides the other, helping both streams place the object consistently.</p>
+      </div>
+      <figure class="paper-fig paradigm">
         <a href="assets/images/figure1.webp" data-figure="1" aria-label="Enlarge Figure 1"><img src="assets/images/figure1.webp" alt="Three diagrams compare a shared backbone, an intermediate 3D representation, and LandV’s coupled diffusion streams." width="1540" height="1759" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></a>
         <figcaption><b>Figure 1</b> Joint video–LiDAR generation paradigms.</figcaption>
-    </figure>
-  </section>
-  <section class="overview-section wrap" id="overview" aria-labelledby="overview-title">
-    <div class="overview-head" id="method"><h2 id="overview-title">Overview</h2></div>
-    <figure class="paper-fig arch">
+      </figure>
+    </div>
+    <figure class="paper-fig arch" id="method">
       <a href="assets/images/figure2.webp" data-figure="2" aria-label="Enlarge Figure 2"><img src="assets/images/figure2.webp" alt="The LandV architecture with video and LiDAR diffusion streams, geometry-guided attention, and a local geometry refinement head." width="2480" height="1239" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></a>
       <figcaption><b>Figure 2</b> LandV’s dual-stream architecture (a) and its Local Geometry Refinement head for LiDAR (b).</figcaption>
     </figure>
@@ -136,7 +135,7 @@
     </div>
   </section>
   <section class="results-section" id="results" aria-labelledby="results-title"><div class="wrap">
-    <h2 id="results-title">Quantitative results</h2>
+    <h2 id="results-title">Quantitative results on LandV-Bench</h2>
     <p class="section-desc">Generation quality, cross-modal geometry, and object consistency on nuScenes.</p>
     <section class="table-section" aria-labelledby="table-one"><h3 id="table-one"><span>Table 1</span> Generation quality on nuScenes</h3>
       <div class="table-scroll" tabindex="0" aria-label="Scroll Table 1 horizontally"><table class="result-table generation-table" aria-label="Table 1. Generation quality on nuScenes">
