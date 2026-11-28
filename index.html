@@ -93,8 +93,9 @@
     <div class="overview-intro" id="introduction">
       <div class="intro-copy">
         <h2 id="overview-title">Overview</h2>
-        <p>Figure 1 shows three ways to generate video and LiDAR together. The first two use a shared backbone (a) or a common 3D scene representation (b). LandV (c) gives each sensor its own stream and lets the two exchange features during generation. The video stream models appearance in a pretrained latent space, while a lighter LiDAR stream predicts range maps directly and refines local geometry.</p>
-        <p>Sensor calibration limits cross-attention to the part of the LiDAR scan covered by each camera, reducing computation. During training, 3D object correspondences identify which direction of attention locates an object more accurately. That direction guides the other, helping both streams place the object consistently.</p>
+        <p><strong>Asymmetric Dual-Stream Architecture.</strong> Modality-specific backbones with a Local Geometry Refinement (LGR) head for fine-grained LiDAR generation.</p>
+        <p><strong>Modality Alignment.</strong> Geometry-guided bidirectional cross-attention and Adaptive Reciprocal Alignment (ARA) for efficient interaction and enhanced consistency.</p>
+        <p><strong>Mutually Beneficial Generation.</strong> Improved generation quality for both video and LiDAR.</p>
       </div>
       <figure class="paper-fig paradigm">
         <a href="assets/images/figure1.webp" data-figure="1" aria-label="Enlarge Figure 1"><img src="assets/images/figure1.webp" alt="Three diagrams compare a shared backbone, an intermediate 3D representation, and LandV’s coupled diffusion streams." width="1540" height="1759" loading="lazy"><span class="zoom" aria-hidden="true">↗</span></a>
@@ -116,11 +117,11 @@
         <button data-group="uniscene" aria-pressed="false">UniScene comparison <small>1</small></button>
         <button data-group="control" aria-pressed="false">Scene control <small>1</small></button>
       </nav>
-      <div class="player-caption" aria-live="polite">
-        <h3 id="clip-heading">GT vs. prediction <span>scene-0796_152</span></h3>
-        <p id="clip-description">One real frame conditions 16 future frames. Six camera views are paired with their LiDAR projections, with ground truth above and LandV below.</p>
-      </div>
       <div class="player-toolbar">
+        <div class="player-caption" aria-live="polite">
+          <h3 id="clip-heading">GT vs. prediction <span>scene-0796_152</span></h3>
+          <p id="clip-description">One real frame conditions 16 future frames. Six camera views are paired with their LiDAR projections, with ground truth above and LandV below.</p>
+        </div>
         <nav id="clips" aria-label="Select a video in this category"></nav>
         <div class="playback">
           <span id="rate-label">Playback speed</span>

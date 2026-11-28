@@ -135,7 +135,9 @@ h3 { letter-spacing: -.03em; }
 .player-wrap { width: 100%; background: #0c1013; border-radius: 5px; overflow: hidden; line-height: 0; }
 .player-wrap video { display: block; width: 100%; height: auto; aspect-ratio: 3840 / 1840; background: #090c0e; object-fit: contain; max-height: 76vh; }
 .player-wrap video:fullscreen { max-height: none; aspect-ratio: auto; }
-.player-caption { margin-bottom: 14px; }
+.player-caption { flex-basis: 100%; }
+.player-toolbar:has(#clips:empty) .player-caption { flex: 1 1 30rem; }
+#clips:empty + .playback { margin-left: 0; }
 .player-caption h3 { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; font-size: 20px; line-height: 1.3; font-weight: 640; }
 .player-caption h3 span { font: 500 13px/1.4 var(--mono); color: var(--quiet); }
 .player-caption p { font-size: 15px; line-height: 1.55; max-width: 85ch; margin-top: 5px; color: var(--quiet); }
