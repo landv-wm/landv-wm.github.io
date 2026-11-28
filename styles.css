@@ -84,12 +84,10 @@ h3 { letter-spacing: -.03em; }
 .play-glyph { width: 0; height: 0; border-block: 5px solid transparent; border-left: 8px solid currentColor; }
 .hero-figure { width: min(100%, 570px); min-width: 0; justify-self: end; }
 .hero-task { margin: 0 0 7px; font-size: 15px; font-weight: 650; }
-.hero-task span, .hero-labels small, .hero-figure figcaption { color: var(--quiet); }
+.hero-task span, .hero-figure figcaption { color: var(--quiet); }
 .hero-task span { font: 450 12px/1.4 var(--mono); }
 .hero-stage + .hero-task { margin-top: 18px; }
-.hero-stage + .hero-labels { margin-top: 9px; }
 .hero-labels { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 4px; font-size: 13px; font-weight: 600; }
-.hero-labels small { font-size: .94em; font-weight: 450; }
 .hero-stage { position: relative; overflow: hidden; aspect-ratio: 1040 / 300; border-radius: 3px; background: #0c1013 url(assets/images/hero-controls.jpg) 0 var(--poster-y) / 100% 600% no-repeat; }
 #hero-sequence, .hero-stage canvas, .hero-sliders { position: absolute; inset: 0; width: 100%; }
 #hero-sequence, .hero-stage canvas { display: block; height: auto; pointer-events: none; }
@@ -205,7 +203,6 @@ dialog::backdrop { background: #172627ce; }
   .mast-inner { gap: 8px; }
   .mast .logotype { width: 70px; }
   .mast nav { gap: clamp(8px, 2.5vw, 14px); font-size: 13px; }
-  .hero-labels small { font-size: 12px; }
   .gallery-nav { display: grid; grid-template-columns: auto auto; justify-content: start; gap: 3px 20px; }
   .gallery-nav button { font-size: 14px; padding: 7px 0; }
   .rate button { padding: 4px 8px; }

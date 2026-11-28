@@ -36,8 +36,9 @@ const heading = document.getElementById('clip-heading');
 const groupButtons = [...document.querySelectorAll('[data-group]')];
 const rateButtons = [...document.querySelectorAll('[data-rate]')];
 const lastClip = new Map();
+const slowRate = 1 / 3;
 let selectedGroup;
-let rate = 1 / 3;
+let rate = slowRate;
 
 function applyRate() {
   player.defaultPlaybackRate = rate;
@@ -186,7 +187,7 @@ if (hero.requestVideoFrameCallback) {
 }
 
 function setHeroSpeed() {
-  const speed = heroSpeed.value === 'slow' ? 1 / 3 : 1;
+  const speed = heroSpeed.value === 'slow' ? slowRate : 1;
   hero.defaultPlaybackRate = speed;
   hero.playbackRate = speed;
 }
@@ -209,6 +210,7 @@ hero.addEventListener('pause', updateHeroToggle);
 reducedMotion.addEventListener('change', () => {
   if (reducedMotion.matches) hero.pause();
 });
+heroSpeed.value = 'slow';
 setHeroSpeed();
 if (!reducedMotion.matches) playHero();
 

@@ -50,38 +50,39 @@
       </nav>
     </div>
     <figure class="hero-figure">
-      <p class="hero-task">First-frame conditioned <span>· scene-0524_208</span></p>
+      <p class="hero-task"><span>scene-0524_208</span></p>
       <div class="hero-labels"><span>GT</span><span>Original</span></div>
       <div class="hero-stage" style="--poster-y: 0%">
         <video id="hero-sequence" width="1040" height="1800" muted playsinline loop preload="metadata"
           poster="assets/images/hero-controls.jpg" src="assets/videos/hero-controls.mp4" aria-label="Synchronized scene control examples"></video>
         <canvas width="1040" height="300" aria-hidden="true"></canvas>
         <div class="hero-sliders" hidden>
-          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="First-frame conditioned, GT. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
-          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="First-frame conditioned, Original. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
+          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="Ground truth. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
+          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="Original prediction. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
         </div>
       </div>
-      <div class="hero-labels"><span>Turn left <small>· White SUV</small></span><span>Turn right <small>· Parked sedan</small></span></div>
+      <p class="hero-task">Ego trajectory</p>
+      <div class="hero-labels"><span>Turn left</span><span>Turn right</span></div>
       <div class="hero-stage" style="--poster-y: 40%">
         <canvas width="1040" height="300" aria-hidden="true"></canvas>
         <div class="hero-sliders" hidden>
-          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="First-frame conditioned, Turn left. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
-          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="First-frame conditioned, Turn right. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
+          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="Turn left. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
+          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="Turn right. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
         </div>
       </div>
-      <p class="hero-task" id="vehicle-insertion">Vehicle insertion <span>· scene-0524_208</span></p>
-      <div class="hero-labels"><span>Original</span><span>Add car <small>· Passing on the left</small></span></div>
+      <p class="hero-task" id="vehicle-insertion">Vehicle insertion</p>
+      <div class="hero-labels"><span>Original</span><span>Add car</span></div>
       <div class="hero-stage" style="--poster-y: 80%">
         <canvas width="1040" height="300" aria-hidden="true"></canvas>
         <div class="hero-sliders" hidden>
           <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="Vehicle insertion, Original. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
-          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="Vehicle insertion, Add car passing on the left. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
+          <label class="hero-slider"><input type="range" min="0" max="100" value="78" aria-label="Vehicle insertion, Add car. Reveal RGB in all views."><span class="hero-divider" aria-hidden="true"><b>‹ ›</b></span></label>
         </div>
       </div>
       <figcaption>
         <span>Drag to compare RGB and LiDAR</span>
         <span class="hero-controls" hidden>
-          <select id="hero-speed" aria-label="Scene control playback speed"><option value="slow">1/3×</option><option value="normal">1×</option></select>
+          <select id="hero-speed" aria-label="Scene control playback speed"><option value="slow" selected>1/3×</option><option value="normal">1×</option></select>
           <button id="hero-toggle" type="button" aria-controls="hero-sequence">Play</button>
         </span>
       </figcaption>
