@@ -39,7 +39,7 @@ button { cursor: pointer; }
 h2 { font-family: var(--serif); font-size: clamp(2.15rem, 3.4vw, 3.25rem); letter-spacing: -.035em; font-weight: 500; line-height: 1.08; }
 h3 { letter-spacing: -.03em; }
 .mast, .hero-band { color: var(--ink); background: #f9fbfa; }
-.mast-inner, .mast nav, .foot { display: flex; align-items: center; }
+.mast-inner, .mast nav { display: flex; align-items: center; }
 .mast-inner { min-height: 62px; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); }
 .logotype, .hero-mark { display: block; }
 .logotype { width: 80px; }
@@ -166,8 +166,11 @@ h3 { letter-spacing: -.03em; }
 .result-table .ours { background: #e0efeb; color: #164f4d; }
 .result-table .paper-reported { color: #596461; background: #f3f5f4; }
 .result-table u { text-underline-offset: 2px; }
-.table-note { color: var(--quiet); font-size: 13px; line-height: 1.55; margin-top: 10px; max-width: 114ch; }
-.foot { justify-content: space-between; min-height: 84px; border-top: 1px solid var(--line); }
+.table-note { color: var(--quiet); font-size: 13px; line-height: 1.55; margin-top: 10px; text-align: justify; }
+.citation-section { padding-bottom: clamp(32px, 4vw, 56px); }
+.foot { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px 20px; min-height: 84px; padding-block: 16px; border-top: 1px solid var(--line); }
+.site-credit { font-size: 14px; color: var(--quiet); }
+.site-credit a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
 .foot a:hover { color: var(--accent); }
 .foot > a:last-child { font-size: 14px; }
 dialog { max-width: min(95vw, 1550px); max-height: 94vh; padding: 12px 15px 16px; border: 1px solid var(--line); border-radius: 6px; background: white; color: var(--ink); }
@@ -198,9 +201,12 @@ dialog::backdrop { background: #172627ce; }
   .intro-copy h2 { margin-bottom: 16px; }
   .gallery-nav { gap: 18px; margin: 18px 0 14px; }
   .table-section { margin-top: 24px; }
+  .table-note { text-align: start; }
   .foot { min-height: 68px; }
 }
 @media (max-width: 500px) {
+  .foot { grid-template-columns: 1fr auto; }
+  .site-credit { grid-column: 1 / -1; grid-row: 2; }
   .mast-inner { gap: 8px; }
   .mast .logotype { width: 70px; }
   .mast nav { gap: clamp(8px, 2.5vw, 14px); font-size: 13px; }
